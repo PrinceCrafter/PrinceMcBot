@@ -16,7 +16,7 @@ client.user.setStatus("dnd")
 });
 
 client.on('message', function(msg) {
-if(msg.content.startsWith ('$Waht')) {
+if(msg.content.startsWith ('$server')) {
       let embed = new Discord.RichEmbed()
       .setColor('RANDOM')
       .setThumbnail(msg.guild.iconURL)
@@ -33,6 +33,82 @@ if(msg.content.startsWith ('$Waht')) {
       msg.channel.send({embed:embed});
     }
   });
+
+    client.on('message', msg => { 
+      if (msg.content.startsWith(`$sug`)) {
+         let args = msg.content.split(" ").slice(1);
+        if (!args[1]) return msg.reply(`يجب كتابه الاقتراح`)
+        if (msg.guild.channels.find('name', 'suggest')) {
+          msg.guild.channels.find('name', 'suggest').send(`
+        الاقتراح من : ${msg.member}
+        الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+        `)
+        }
+      }
+      })
+
+
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
+        .addField(':loudspeaker: | اطلق من دخل' , `Welcome to the server, ${member}`)
+        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+               
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                     
+                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
+                                       
+     .setFooter(`${member.guild.name}`)
+        .setTimestamp()
+   
+      channel.sendEmbed(embed);
+    });
+  client.on("message", message => {
+ if (message.content === "$help-js-bc") {
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+	  .addField('**$help-js-bc-1 ➺',` ⦁ جميع البرودكاست  ⦁**`)
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+  message.author.send({embed});
+  }
+});
+
+  client.on("message", message => {
+ if (message.content === "$help-js-bc-1") {
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+	  .addField('**❖ برودكاست + للكل + مطور ➺',` ⦁  https://hastebin.com/bipanureqa.js ⦁**`)
+	  .addField('**❖ برودكاست + للكل + غير مطور ➺',` ⦁  https://hastebin.com/kuvoruzowe.cs ⦁**`)
+	  .addField('**❖  برودكاست + للأونلاين + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zujuvupali.php ⦁**`)
+	  .addField('**❖ برودكاست + للكل + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zojokunayo.php ⦁**`)
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+  message.author.send({embed});
+  }
+});
+    
+    client.on('guildMemberRemove', member => {
+        var embed = new Discord.RichEmbed()
+        .setAuthor(member.user.username, member.user.avatarURL)
+        .setThumbnail(member.user.avatarURL)
+        .setTitle(`بس بعرف وين رحت؟؟؟ :raised_hand::skin-tone-1: :pensive:`)
+        .setDescription(`مع السلامه تشرفنا بك :raised_hand::skin-tone-1: :pensive: `)
+        .addField(':bust_in_silhouette:   تبقي',`**[ ${member.guild.memberCount} ]**`,true)
+        .setColor('RED')
+        .setFooter(`====ولكم منور السيرفر اتمنا لك الاستمتاع====`, 'https://cdn.discordapp.com/attachments/397818254439219217/399292026782351381/shy.png')
+    
+    var channel =member.guild.channels.find('name', 'welcome')
+    if (!channel) return;
+    channel.send({embed : embed});
+    })
+
   
   var Himo_04 = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_682a1cus5.png","https://d.top4top.net/p_682pycol4.png","https://c.top4top.net/p_682vqehy3.png","https://b.top4top.net/p_682mlf9d2.png","https://a.top4top.net/p_6827dule1.png","https://b.top4top.net/p_682g1meb10.png","https://a.top4top.net/p_682jgp4v9.png","https://f.top4top.net/p_682d4joq8.png","https://e.top4top.net/p_6828o0e47.png","https://d.top4top.net/p_6824x7sy6.png","https://c.top4top.net/p_682gzo2l5.png","https://b.top4top.net/p_68295qg04.png","https://a.top4top.net/p_682zrz6h3.png","https://f.top4top.net/p_6828vkzc2.png","https://e.top4top.net/p_682i8tb11.png","https://f.top4top.net/p_8816hvic1.png","https://d.top4top.net/p_882020461.png","https://e.top4top.net/p_882s3ftn1.png","https://a.top4top.net/p_882eg9c51.png","https://c.top4top.net/p_882xkcqd1.png","https://f.top4top.net/p_882w7pdi1.png","https://a.top4top.net/p_882gcpmo1.png"]
     client.on('message', message => {
@@ -128,31 +204,26 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 
-client.on('message', msg => {
-  if (msg.content === '$ping') {
-    msg.reply('Pong!');
-  }
-});
-if (message.content === '$help2') {
+if (message.content === '$help1') {
               var embed  = new Discord.RichEmbed()
                 .addField("**LINKS**" ,":no_entry_sign: تم اضافه منع الروابط :no_entry_sign: ")
 				.addField("**Bot**" ," :heart: Bot By KillerFox_:heart: ")
                 .addField("broadcast (bc)" ,"**الاستخدام:** ``~broadcast <الرساله> , $bc <الرساله>``")
-                .addField("**BAN**" ,"**الاستخدام:** ``~ban <المستخدم>``")
-                .addField("**KICK**" ,"**الاستخدام:** ``~kick <المستخدم> ``")
-                .addField("**ِAVATAR**" ,"**الاستخدام:** ``~avatar``")
-                .addField("**INFO**", "**الأستخدام :** ``~info``")
-                .addField("**SAY**" ,"**الاستخدام:** ``~say <الرساله>``")
-                .addField("**ID**" ,"**ال��ستخدام:** ``~id``")
-                .addField("**SERVER**" ,"**الاستخدام:** ``~server``")
-                .addField("**INVITE**" ,"**الاستخدام:** ``~invite <لأضافه البوت لأى سيرفر>``")
-                .addField("**SUPPORT**" ,"**الاستخدام:** ``~suppport <سيرفر دعم الفنى>``")
-                .addField("**QA**" ,"**الاستخدام:** ``~qa <السؤال>``  ")
-                .addField("**CLEAR**" ,"**الاستخدام:** ``~clear <العدد>``")
-                .addField("**PING**", "**الأستخدام:** ``~ping``")
-                .addField("**SERVERNAME**", "**الأستخدام:** ``~servername``")
-                .addField("**CUT_TWEET**", "**الاستخدام** ``~ct``")
-                .addField("**TWEET**", "**الاستخدام** ``~tweet <الرساله>``")
+                .addField("**BAN**" ,"**الاستخدام:** ``$ban <المستخدم>``")
+                .addField("**KICK**" ,"**الاستخدام:** ``$kick <المستخدم> ``")
+                .addField("**ِAVATAR**" ,"**الاستخدام:** ``$avatar``")
+                .addField("**INFO**", "**الأستخدام :** ``$info``")
+                .addField("**SAY**" ,"**الاستخدام:** ``$say <الرساله>``")
+                .addField("**ID**" ,"**ال��ستخدام:** ``$id``")
+                .addField("**SERVER**" ,"**الاستخدام:** ``$server``")
+                .addField("**INVITE**" ,"**الاستخدام:** ``$invite <لأضافه البوت لأى سيرفر>``")
+                .addField("**SUPPORT**" ,"**الاستخدام:** ``$suppport <سيرفر دعم الفنى>``")
+                .addField("**QA**" ,"**الاستخدام:** ``$qa <السؤال>``  ")
+                .addField("**CLEAR**" ,"**الاستخدام:** ``$clear <العدد>``")
+                .addField("**PING**", "**الأستخدام:** ``$ping``")
+                .addField("**SERVERNAME**", "**الأستخدام:** ``$servername``")
+                .addField("**CUT_TWEET**", "**الاستخدام** ``$ct``")
+                .addField("**TWEET**", "**الاستخدام** ``$tweet <الرساله>``")
                 .addField("**NO INVITE LINKE**","تم اضافة خاصية منع الانفيتات ")
                 .addField("**LOGIN**" , " تم اضافة خاصية التفعيل لطلب تشغيلها في السيرفر كلم المبيرمجين ")
                 .setColor('RANDOM')
@@ -161,7 +232,7 @@ if (message.content === '$help2') {
     }
 });
 client.on('message', message => {
-  if(message.content === ('clear')) {
+  if(message.content === ('$clear')) {
   let modRole = message.guild.roles.find("name", "Admin");
   if (!modRole) return message.reply('You do not have Admin Role'); {
     }
@@ -279,55 +350,39 @@ client.on('ready', () => {
   message.author.send({embed});
   }
 });
-
+  client.on("message", message => {
+ if (message.content === "$help2") {
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+	  .addField('**$help-js ➺** **⦁ قائمة أكواد الجافا سكربت ⦁**')
+	  .addField('**$help-soon ➺**')
+      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
+  message.author.send({embed});
+  }
+});
 
   client.on("message", message => {
  if (message.content === "$help-js") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('**$help-js-source ➺',` ⦁ قسم السورس الأساسي ⦁**`)
-	  .addField('**$help-js-bc ➺',` ⦁ قسم أكواد البرودكاست ⦁**`)
-	  .addField('**$help-js-welcome ➺',` ⦁ قسم أكواد الترحيب ⦁**`)
+	  .addField('**$help-js-source ➺ ⦁ قسم السورس الأساسي ⦁**')
+	  .addField('**$help-js-bc ➺ ⦁ قسم أكواد البرودكاست ⦁**')
+	  .addField('**$help-js-welcome ➺ ⦁ قسم أكواد الترحيب ⦁**')
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
 });
-
-  client.on("message", message => {
- if (message.content === "$help-js-bc") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('**$help-js-bc-1 ➺',` ⦁ جميع البرودكاست  ⦁**`)
-      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-  message.author.send({embed});
-  }
-});
-
-  client.on("message", message => {
- if (message.content === "$help-js-bc-1") {
-  const embed = new Discord.RichEmbed()
-      .setColor("RANDOM")
-      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('**❖ برودكاست + للكل + مطور ➺',` ⦁  https://hastebin.com/bipanureqa.js ⦁**`)
-	  .addField('**❖ برودكاست + للكل + غير مطور ➺',` ⦁  https://hastebin.com/kuvoruzowe.cs ⦁**`)
-	  .addField('**❖  برودكاست + للأونلاين + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zujuvupali.php ⦁**`)
-	  .addField('**❖ برودكاست + للكل + مع منشن + غير مطور ➺',` ⦁  https://hastebin.com/zojokunayo.php ⦁**`)
-      .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-  message.author.send({embed});
-  }
-});
-
 
    client.on("message", message => {
  if (message.content === "$help-js-source") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('**$help-js-source-1 ➺',` ⦁ السورس الأساسي⦁**`)
-	  .addField('**$help-js-source-2 ➺',` ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت ⦁**`)
-	  .addField('**$help-js-source-3 ➺',` ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت ⦁**`) 
+	  .addField('**$help-js-source-1 ➺ ⦁ السورس الأساسي⦁**')
+	  .addField('**$help-js-source-2 ➺ ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت ⦁**')
+	  .addField('**$help-js-source-3 ➺ ⦁ السورس الأساسي مع الستريمنق ومعلومات البوت ⦁**') 
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
@@ -337,7 +392,7 @@ client.on('ready', () => {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('**❖ كود السورس الأساسي ',`https://hastebin.com/xumiferaru.coffeescript**`)
+	  .addField('**❖ كود السورس الأساسي https://hastebin.com/xumiferaru.coffeescript**')
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
@@ -347,7 +402,7 @@ client.on('ready', () => {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('** ❖ السورس الأساسي مع الستريمنق ومعلومات البوت',` https://hastebin.com/idotifusid.coffeescript **`)
+	  .addField('** ❖ السورس الأساسي مع الستريمنق ومعلومات البوت https://hastebin.com/idotifusid.coffeescript **')
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
@@ -357,7 +412,7 @@ client.on('ready', () => {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
-	  .addField('** ❖ السورس الأساسي مع الواتشينق ',`https://hastebin.com/jivizupafi.coffeescript **`)
+	  .addField('** ❖ السورس الأساسي مع الواتشينق https://hastebin.com/jivizupafi.coffeescript **')
       .setFooter('─═════════ {✯FoxBot✯} ════════════─')
   message.author.send({embed});
   }
