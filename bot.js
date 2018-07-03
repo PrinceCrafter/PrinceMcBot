@@ -21,7 +21,7 @@ j = 1;
 });
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`Desert Bot- Scrpit By ┃ KillerFox`);
+      console.log(`Desert Bot- Scrpit By ┃ NONO`);
         console.log(`----------------`);
       console.log(`ON ${client.guilds.size} Servers '     Bot By ┃ !NoNo'. ' `);
     console.log(`----------------`);
