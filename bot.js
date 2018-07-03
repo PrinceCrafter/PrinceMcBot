@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = "^";
 
 client.on('ready', function(){    
     var ms = 40000 ;    
@@ -22,7 +21,7 @@ j = 1;
 ;
 
 client.on('message', message => {
-if (message.content.startsWith(prefix + 'help')) {
+if (message.content.startsWith('^help')) {
   var embed = new Discord.RichEmbed() 
       .setColor("#ffff00")
       .setThumbnail(message.author.avatarURL)
@@ -57,7 +56,7 @@ if (message.content.startsWith(prefix + 'help')) {
 });
 
 client.on('message', message => {
-if (message.content.startsWith(prefix + 'help')) {
+if (message.content.startsWith('^help')) {
    var embed = new Discord.RichEmbed()
         .setTitle('تم ارسال جميع الاوامر على الخاص ,, :e_mail: ')
         .setColor('RANDOM')
@@ -233,7 +232,7 @@ message.react("??")
 
 client.on('message', message => {
 	                  if(!message.channel.guild) return;
-    if(message.content.startsWith(prefix + 'bc')) {
+    if(message.content.startsWith('^bc')) {
     if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
   if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
     let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
@@ -275,7 +274,7 @@ client.on('message', message => {
     });
 	
    client.on('message', message => {
-       if (message.content.startsWith(prefix + 'bot')) {
+       if (message.content.startsWith('^bot')) {
      let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
   let embed = new Discord.RichEmbed()
   .setTitle(`${client.guilds.size}سيرفرات `)
